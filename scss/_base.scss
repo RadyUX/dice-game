@@ -1,0 +1,28 @@
+$font-lato: 'Lato', sans-serif;
+
+$color-primary: #eb4d4c;
+$color-secondary: rgba(247,247,247,255);
+
+$breakpoints: (
+ mobile: 599px
+);
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)){
+    font-size: 1rem;
+    }
+    }
+
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: $font-lato;
+}
+
+
+
+body{
+    background-color: aliceblue;
+
+}
