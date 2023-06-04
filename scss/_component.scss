@@ -73,7 +73,7 @@
 .current-score{
     background-color: $color-primary;
     padding: 10px 20px;
-    height: 10%;
+    max-height: 10%;
     max-width: 550px;
     border-radius: 20px;
     display: flex;
