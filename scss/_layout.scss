@@ -18,16 +18,30 @@
   }
   
   .dice {
-    position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
+  width: 250px;
+  height: 250px;
   background-color: #FFFFFF; 
   border-radius: 10px;
-  border: 2px solid #000000; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 
+  .dice-dot {
+    --top: 0%;
+	--left: 0%;
+
+	width: 20px;
+	height: 20px;
+	background-color: $color-primary;
+	border-radius: 50%;
+
+	position: absolute;
+	top: var(--top);
+	left: var(--left);
+	transform: translateX(calc(var(--left) * -1)) translateY(calc(var(--top) * -1));
+}
 
   }
   

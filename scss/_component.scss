@@ -13,11 +13,38 @@
     background: none;
 }
 
+@mixin iconStyles{
+    color: $color-primary;
+    padding-right: 10px;
+    font-size: 2rem;
+}
+
+.roll-btn{
+    @include textStyles;
+    @include buttonStyles;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    span{
+        @include iconStyles;
+    }
+}
+.hold-btn{
+    @include textStyles;
+    @include buttonStyles;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    span{
+        @include iconStyles;
+    }
+}
 .newgame-btn{
 
     i{
-        color: $color-primary;
-        padding-right: 10px;
+        @include iconStyles;
     }
     position: absolute;
     top: 10%;

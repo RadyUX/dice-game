@@ -11,15 +11,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600&family=Barlow:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Lato:ital,wght@0,300;0,400;0,700;1,100;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Open+Sans&family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@100;300&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>2 Player Dice Game</title>
 </head>
 <body>
     <button class="newgame-btn"><i class="fa-regular fa-plus"></i>New Game</button>
 
     <div class="game-container">
-        <div class="dice">  
-           
-        </div>
+        <div class="dice"></div>
 
         <div class="player1">
                 <h1 class="main-text">player 1</h1>
@@ -37,9 +36,18 @@
                 <h6>current</h6>
                 <p>0</p>
             </div>
-    </div>
+       </div>
+
+   
 
     </div>
+    <button class="roll-btn"><span class="material-symbols-outlined">
+        replay
+        </span>roll dice</button>
+
+        <button class="hold-btn"><span class="material-symbols-outlined">
+            vertical_align_bottom
+            </span>hold</button>
     <script src="script.js"></script>
 </body>
 </html>
