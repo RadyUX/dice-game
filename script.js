@@ -1,7 +1,7 @@
 let currentPlayer = 1
 let roundScore = [0, 0]
 let globalScore = [0, 0]
-let hasRolled = [false, false];
+
 
 function clearDice() {
     const dice = document.querySelector('.dice');
@@ -69,7 +69,7 @@ function clearGame(){
   currentPlayer = 1;
     roundScore = [0, 0];
     globalScore = [0, 0];
-    hasRolled = [false, false];
+   
     document.querySelector(`.player1 .current-score p`).textContent = roundScore[0];
     document.querySelector(`.player2 .current-score p`).textContent = roundScore[1];
     document.querySelector(`.player1 .global-score`).textContent = globalScore[0];
@@ -86,18 +86,18 @@ btnNewGame.addEventListener("click", () =>{
 
 btnRollDice.addEventListener("click", () => {
     
-    if (hasRolled[currentPlayer - 1]) {
-        alert(`le joueur ${currentPlayer} a dejà lancé le de ce tour.`);
-        return;
-      }
+   
     const random = Math.floor((Math.random() * 6) + 1);
     if (random === 1) {
-        alert("tombé sur 1, retour a 0 👽")
-        globalScore[currentPlayer - 1] = 0;
-        document.querySelector(`.player${currentPlayer} .global-score`).textContent = 0;
+        alert(`tombé sur 1, retour a 0 👽 au tour du joueur ${(currentPlayer % 2) + 1}`)
         roundScore[currentPlayer - 1] = 0;
         document.querySelector(`.player${currentPlayer} .current-score p`).textContent = 0;
-        
+        document.querySelector(`.player${currentPlayer}`).classList.remove("active");
+  document.querySelector(`.player${(currentPlayer % 2) + 1}`).classList.add("active");
+
+
+  
+    currentPlayer = (currentPlayer % 2) + 1;
    
     } else {
         roundScore[currentPlayer - 1] += random; 
@@ -107,21 +107,14 @@ btnRollDice.addEventListener("click", () => {
     document.body.appendChild(dice);
 
   
-    hasRolled[currentPlayer - 1] = true;
-    document.querySelector(`.player${currentPlayer} .current-score p`).textContent = roundScore[currentPlayer - 1];
-
   console.log(`tour du joueur ${currentPlayer}`);
 	
 });
 
 btnHold.addEventListener("click", () => {
-    if (!hasRolled[currentPlayer - 1]) {
-        alert(`le joueur ${currentPlayer} na pas encore lancé le dé.`);
-        return;
-      }
-
+  
     globalScore[currentPlayer - 1] += roundScore[currentPlayer - 1]; 
-  if ( globalScore[currentPlayer - 1] >=  10){
+  if ( globalScore[currentPlayer - 1] >=  100){
     alert(`victoire du joueur ${currentPlayer}`)
     clearGame()
   }
@@ -144,6 +137,6 @@ btnHold.addEventListener("click", () => {
 
   
     currentPlayer = (currentPlayer % 2) + 1;
-    hasRolled = [false, false];
+    
     console.log(`tour du joueur ${currentPlayer}`);
   });
