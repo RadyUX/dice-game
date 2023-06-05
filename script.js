@@ -76,24 +76,43 @@ function clearGame(){
     document.querySelector(`.player2 .global-score`).textContent = globalScore[1];
     
     
+} 
+
+function RollDice(){
+  return new Promise(resolve => {
+    let counter = 0;
+    let result;
+    const interval = setInterval(() => {
+      const random = Math.floor((Math.random() * 6) + 1);
+      result = random
+      const dice = createDice(random);
+      document.body.appendChild(dice);
+      counter++;
+      if (counter > 10) { 
+        clearInterval(interval);
+        resolve(result);  
+      }
+      console.log(random)
+      console.log(`result ${result}`)
+    }, 30);
+  });
 }
+
 btnNewGame.addEventListener("click", () =>{  
-  
     clearGame()
-  
-    alert("score rénitialisé, nouvelle partie commencé !");
+    alert("score rénitialisé, nouvelle partie commencé 👹");
 })
 
-btnRollDice.addEventListener("click", () => {
+btnRollDice.addEventListener("click", async () => {
     
-   
-    const random = Math.floor((Math.random() * 6) + 1);
+   let random = await RollDice()
+  
     if (random === 1) {
         alert(`tombé sur 1, retour a 0 👽 au tour du joueur ${(currentPlayer % 2) + 1}`)
         roundScore[currentPlayer - 1] = 0;
         document.querySelector(`.player${currentPlayer} .current-score p`).textContent = 0;
         document.querySelector(`.player${currentPlayer}`).classList.remove("active");
-  document.querySelector(`.player${(currentPlayer % 2) + 1}`).classList.add("active");
+    document.querySelector(`.player${(currentPlayer % 2) + 1}`).classList.add("active");
 
 
   
@@ -103,22 +122,21 @@ btnRollDice.addEventListener("click", () => {
         roundScore[currentPlayer - 1] += random; 
         document.querySelector(`.player${currentPlayer} .current-score p`).textContent = roundScore[currentPlayer - 1];
     }
-	const dice = createDice(random);
-    document.body.appendChild(dice);
 
-  
-  console.log(`tour du joueur ${currentPlayer}`);
+
 	
 });
 
 btnHold.addEventListener("click", () => {
-  
-    globalScore[currentPlayer - 1] += roundScore[currentPlayer - 1]; 
+
+  globalScore[currentPlayer - 1] += roundScore[currentPlayer - 1]; 
+  document.querySelector(`.player${currentPlayer} .global-score`).textContent =  globalScore[currentPlayer - 1];
+    
   if ( globalScore[currentPlayer - 1] >=  100){
     alert(`victoire du joueur ${currentPlayer}`)
     clearGame()
   }
-    document.querySelector(`.player${currentPlayer} .global-score`).textContent =  globalScore[currentPlayer - 1];
+   
   
     if (currentPlayer === 2) {
         roundScore = [0, 0];
