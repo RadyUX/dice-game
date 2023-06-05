@@ -64,18 +64,22 @@ const btnRollDice = document.querySelector(".roll-btn");
 const btnHold = document.querySelector(".hold-btn");
 const btnNewGame = document.getElementById("reset")
  
-btnNewGame.addEventListener("click", () =>{  
-    currentPlayer = 1;
+
+function clearGame(){
+  currentPlayer = 1;
     roundScore = [0, 0];
-    totalScore = [0, 0];
+    globalScore = [0, 0];
     hasRolled = [false, false];
     document.querySelector(`.player1 .current-score p`).textContent = roundScore[0];
     document.querySelector(`.player2 .current-score p`).textContent = roundScore[1];
-    document.querySelector(`.player1 .global-score`).textContent = totalScore[0];
-    document.querySelector(`.player2 .global-score`).textContent = totalScore[1];
+    document.querySelector(`.player1 .global-score`).textContent = globalScore[0];
+    document.querySelector(`.player2 .global-score`).textContent = globalScore[1];
     
     
-    
+}
+btnNewGame.addEventListener("click", () =>{  
+  
+    clearGame()
   
     alert("score rénitialisé, nouvelle partie commencé !");
 })
@@ -119,6 +123,7 @@ btnHold.addEventListener("click", () => {
     globalScore[currentPlayer - 1] += roundScore[currentPlayer - 1]; 
   if ( globalScore[currentPlayer - 1] >=  10){
     alert(`victoire du joueur ${currentPlayer}`)
+    clearGame()
   }
     document.querySelector(`.player${currentPlayer} .global-score`).textContent =  globalScore[currentPlayer - 1];
   

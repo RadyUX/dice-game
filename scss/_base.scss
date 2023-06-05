@@ -12,6 +12,14 @@ $breakpoints: (
     }
     }
 
+    
+@mixin centering($topValue){
+    position: absolute;
+    top: $topValue;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 *,::before,::after{
     margin: 0;
     padding: 0;

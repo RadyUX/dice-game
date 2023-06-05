@@ -22,10 +22,7 @@
 .roll-btn{
     @include textStyles;
     @include buttonStyles;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include centering(80%);
     span{
         @include iconStyles;
     }
@@ -33,10 +30,8 @@
 .hold-btn{
     @include textStyles;
     @include buttonStyles;
-    position: absolute;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
+    @include centering(85%);
     span{
         @include iconStyles;
     }
@@ -46,10 +41,7 @@
     i{
         @include iconStyles;
     }
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include centering(10%);
     @include textStyles;
     @include buttonStyles;
 }
